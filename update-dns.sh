@@ -15,7 +15,7 @@ CONFIG_FILE="$(pwd)/config.sh"
 if ! [ -f $CONFIG_FILE ]; then
     echo "Config file not found" >>$LOG_FILE
     echo "Config file not found"
-    exit 0
+    exit 1
 fi
 
 #Validate if every parameter is set
@@ -23,32 +23,32 @@ source $CONFIG_FILE
 if [ -z "${record}" ]; then
     echo "Record not set in config file" >>$LOG_FILE
     echo "Record not set in config file"
-    exit 0
+    exit 1
 fi
 if [ -z "${zone_id}" ]; then
     echo "Zone ID (zone_id) not set in config file" >>$LOG_FILE
     echo "Zone ID (zone_id) not set in config file"
-    exit 0
+    exit 1
 fi
 if [ -z "${token}" ]; then
     echo "Token not set in config file" >>$LOG_FILE
     echo "Token not set in config file"
-    exit 0
+    exit 1
 fi
 if [ -z "${email}" ]; then
     echo "Email not set in config file" >>$LOG_FILE
     echo "Email not set in config file"
-    exit 0
+    exit 1
 fi
 if [ "${proxy}" != "true" ] && [ "${proxy}" != "false" ]; then
     echo "Record not set in config file" >>$LOG_FILE
     echo "Record not set in config file"
-    exit 0
+    exit 1
 fi
 if [ -z "${ttl}" ]; then
     echo "Ttl not set in config file" >>$LOG_FILE
     echo "Ttl not set in config file"
-    exit 0
+    exit 1
 fi
 
 
@@ -64,7 +64,7 @@ ip=$(curl -4 -s -X GET https://api.ipify.org --max-time 10)
 if [ -z "$ip" ]; then
     echo "Error! Can't get external ip from https://api.ipify.org. Either there's no network connection or the site is down" >>$LOG_FILE
     echo "Error! Can't get external ip from https://api.ipify.org. Either there's no network connection or the site is down"
-    exit 0
+    exit 1
 fi
 
 
