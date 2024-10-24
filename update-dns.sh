@@ -1,4 +1,3 @@
-#needs jq
 #!/usr/bin/env bash
 
 #Create a file to store log
