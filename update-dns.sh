@@ -11,7 +11,7 @@ echo "" >>$LOG_FILE
 echo "$(date "+%z %Y-%m-%d %H:%M:%S")" >>$LOG_FILE
 
 #Validate if config file exists
-CONFIG_FILE="$(pwd)/config.sh"
+CONFIG_FILE="$(pwd)/config.txt"
 if ! [ -f $CONFIG_FILE ]; then
     echo "Config file not found" >>$LOG_FILE
     echo "Config file not found"
