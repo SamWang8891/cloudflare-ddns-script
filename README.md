@@ -16,7 +16,7 @@ This script updates the DNS A record to Cloudflare. This means that you'll get a
    2. For others, please figure out yourself as I'm not familiar with all OS
 2. **Make sure to create the DNS A record you want the script to update first**
 3. **Clone the repository**
-   Change directory as your desire then`git clone https://github.com/SamWang8891TW/cloudflare-ddns-script.git`, then `cd cloudflare-ddns-script`
+   Change directory as your desire then`git clone https://github.com/SamWang8891/cloudflare-ddns-script.git`, then `cd cloudflare-ddns-script`
 4. **Modify the config.sh file**
 5. **(Optional) Add execute permission to update-dns.sh file**
 
