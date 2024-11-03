@@ -24,7 +24,7 @@ This script updates the DNS A record to Cloudflare. This means that you'll get a
 6. **Run the script**
 
    `./update-dns.sh`  OR  `bash update-dns.sh`
-7. If there's error, check ur config.sh again.
+7. If there's an error, check ur config.sh again.
 8. (Optional) Add to cronjob.
 
    ``cronjob -e``
