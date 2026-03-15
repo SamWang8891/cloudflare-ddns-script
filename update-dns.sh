@@ -1,13 +1,20 @@
 #!/bin/bash
 
-
 # Parse optional arguments
 CURL_INTERFACE_OPT=""
+ENV_PATH=""
+CLEAR_LOG=false
 while [[ $# -gt 0 ]]; do
     case "$1" in
         --interface)
-            CURL_INTERFACE_OPT="--interface $2"
+            if [ "$2" != "default" ]; then
+                CURL_INTERFACE_OPT="--interface $2"
+            fi
             shift 2
+            ;;
+        --clear_log)
+            CLEAR_LOG=true
+            shift
             ;;
         *)
             shift
@@ -16,8 +23,11 @@ while [[ $# -gt 0 ]]; do
 done
 
 
-# Create a file to store log
-LOG_FILE="$(pwd)/update-dns.log"
+#Create a file to store log
+LOG_FILE="/app/script/update-dns.log"
+if [ "$CLEAR_LOG" = true ]; then
+    rm -f "$LOG_FILE"
+fi
 if ! [ -f $LOG_FILE ]; then
     touch $LOG_FILE
 fi
