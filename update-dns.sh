@@ -1,6 +1,21 @@
 #!/bin/bash
 
 
+# Parse optional arguments
+CURL_INTERFACE_OPT=""
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --interface)
+            CURL_INTERFACE_OPT="--interface $2"
+            shift 2
+            ;;
+        *)
+            shift
+            ;;
+    esac
+done
+
+
 # Create a file to store log
 LOG_FILE="$(pwd)/update-dns.log"
 if ! [ -f $LOG_FILE ]; then
@@ -65,7 +80,7 @@ If failed or incorrect, you can try to replace the service with another one
 '
 
 # Get the external IPv4 address
-ip=$(curl -4 -s -X GET https://api.ipify.org --max-time 10)
+ip=$(curl -4 -s -X GET https://api.ipify.org --max-time 10 $CURL_INTERFACE_OPT)
 if [ -z "$ip" ]; then
     echo "Error! Can't get external ip from https://api.ipify.org. Either there's no network connection or the site is down" >>$LOG_FILE
     echo "Error! Can't get external ip from https://api.ipify.org. Either there's no network connection or the site is down"
