@@ -24,7 +24,7 @@ done
 
 
 #Create a file to store log
-LOG_FILE="$PWD/update-dns.log"
+LOG_FILE="$(dirname "$0")/update-dns.log"
 if [ "$CLEAR_LOG" = true ]; then
     rm -f "$LOG_FILE"
 fi
